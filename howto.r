@@ -1,28 +1,4 @@
-# Neues Erstellen des Paketes [aufwendig, und eigentlich nicht notwendig]
-# Zur Sicherheit immer eine alte Kopie aufbewahren
-
-#Für Pakete mit C++ Quellcode einfachste Möglichkeit
-library(Rcpp)
-
-# Im Workspace dürfen nur die entsprechenden SMOTE und knn Funktionen vorhanden sein
-Rcpp.package.skeleton("SMOTE", list = c(ls()),example_code = F)
-
-# Kopieren des C++ Quellcodes in "src" Ordner
-# Kopieren der versteckten ( .abc) Funktionen in die entsprechenden *.r Dateien
-# Ausführen des folgenden Befehls im entsprechenden Verzeichnis (hier: Verzeichnis dieser Datei)
-compileAttributes("SMOTE")
-# Ab hier "normal" weiter
-
-# Bearbeitung der bereits vorhandenen Package Dateien
-# *.r und *.rd files entsprechend anpassen, description Datei versionsnummer inkrementieren.
-# Weitere Anpassungen nach Bedarf (z.B. bei Umbenennungen von Funktionsnamen muss auch die Dokumentation und der jeweilige Aufruf angepasst werden)
-
-# Auf Kommandozeile im entsprechenden Verzeichnis
-# R CMD check SMOTE (1 WARNING, 2 NOTES) [passt]
-# R CMD build SMOTE -->erstellt SMOTE_X.Y.tar.gz, wobei X.Y die aktuelle Versionsnummer nach der description Datei ist
-
-# installieren
-# Zur Sicherheit: Paket löschen, R neustarten, dann installieren 
+# install
 install.packages("SMOTE_0.2.tar.gz", repos = NULL, type = "source")
 library(SMOTE)
 
@@ -49,18 +25,5 @@ synthetic = safelevelsmote.separated(data = data, minority = minority.class1, k 
 
 synthetic = lnsmote.separated(data = data, minority = minority.class1, k = 5, o = 4, method = 'e')
 
-?wrapper
-
-?devtools::check
-install.packages("devtools")
 
 
-?check
-?devtools::build("SMOTE")
-devtools::document("SMOTE")
-devtools::check("SMOTE", cleanup = F)
-?devtools::check
-
-?document
-
-inst
