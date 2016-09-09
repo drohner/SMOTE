@@ -1,4 +1,5 @@
-# install
+# download the archive
+# install 
 install.packages("SMOTE_0.2.tar.gz", repos = NULL, type = "source")
 library(SMOTE)
 
